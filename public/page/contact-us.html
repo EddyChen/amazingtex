@@ -55,14 +55,27 @@
 </div>
 <script type="text/javascript">
   // 百度地图API功能
-	var map = new BMap.Map("jingyan-map");    // 创建Map实例
-	map.centerAndZoom(new BMap.Point(121.464359, 31.212192), 11);  // 初始化地图,设置中心点坐标和地图级别
-	//添加地图类型控件
-	map.addControl(new BMap.MapTypeControl({
-		mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));	  
-	map.setCurrentCity("上海");          // 设置地图显示的城市 此项是必须设置的
-	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	var map = new BMapGL.Map("jingyan-map");    // 创建Map实例  
+  var myGeo = new BMapGL.Geocoder();
+  // 将地址解析结果显示在地图上，并调整地图视野
+  myGeo.getPoint('上海市金山区朱泾工业园区仙业路188号C幢', function(point){
+    if(point){
+      map.centerAndZoom(point, 17);  // 初始化地图,设置中心点坐标和地图级别
+      map.enableScrollWheelZoom(false);     //开启鼠标滚轮缩放
+      var marker = new BMapGL.Marker(point);
+      map.addOverlay(marker);
+      var opts = {
+        width: 200,
+        height: 100,
+        title: '上海京雁贸易有限公司'
+      };
+      var infoWindow = new BMapGL.InfoWindow('上海市金山区朱泾工业园区仙业路188号C幢', opts);
+      // 点标记添加点击事件
+      marker.addEventListener('click', function () {
+        map.openInfoWindow(infoWindow, point); // 开启信息窗口
+      });
+    }else{
+      alert('您选择的地址没有解析到结果！');
+    }
+  }, '上海市')
 </script>
