@@ -1,0 +1,66 @@
+
+.product-link > p,
+.product-link > a{
+  font-size: 18px;
+}
+
+.product-link-icon {
+  color: #5A5A5A;
+}
+
+.product-introduction {
+  padding: 50px 20px 10px 50px;
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.featurette-image {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+.featurette-corner {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+}
+
+.left-top-corner {
+  float: left;
+  top: 0;
+  left: 0;
+  border-top: 5px solid #000;
+  border-left: 5px solid #000;
+}
+
+.right-bottom-corner {
+  float: right;
+  right: 0;
+  bottom: 0;
+  border-right: 5px solid #000;
+  border-bottom: 5px solid #000;
+}
